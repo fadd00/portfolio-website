@@ -13,13 +13,15 @@ nav {
     justify-content: space-between;
     position: fixed;
     top: 0;
-    width: 100%;
+    left: 0;
+    width: 100vw;
     background: rgba(30, 30, 30, 0.25);
     box-shadow: 0 4px 24px 0 rgba(0,0,0,0.2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255,255,255,0.18);
     padding: 0.75rem 2.5rem 0.75rem 2rem;
+    box-sizing: border-box;
     z-index: 1000;
 }
 
@@ -377,6 +379,7 @@ footer {
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
+    padding: 0 2rem;
 }
 
 .services-left, .services-right {
@@ -487,6 +490,9 @@ footer {
 /* Hamburger button */
 .hamburger {
     display: none;
+    position: absolute;
+    top: 1.2rem;
+    right: 2rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -568,7 +574,22 @@ footer {
         display: none;
     }
     .hamburger {
-        display: flex;
+        display: flex !important;
+    }
+    .services-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    .services-row {
+        flex-direction: row;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .services-img {
+        width: 7rem;
+        height: 9rem;
     }
 }
 
@@ -576,5 +597,12 @@ footer {
 @media (max-width: 600px) {
     nav {
         padding: 0.7rem 1rem;
+    }
+    .services-container {
+        padding: 0 0.5rem;
+    }
+    .services-img {
+        width: 5.5rem;
+        height: 7rem;
     }
 }
