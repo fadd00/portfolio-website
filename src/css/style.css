@@ -14,7 +14,7 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%; /* Changed from 100vw to prevent potential horizontal scroll */
     background: rgba(30, 30, 30, 0.25);
     box-shadow: 0 4px 24px 0 rgba(0,0,0,0.2);
     backdrop-filter: blur(10px);
@@ -604,5 +604,191 @@ footer {
     .services-img {
         width: 5.5rem;
         height: 7rem;
+    }
+}
+
+/* Additional Media Queries for Responsiveness */
+
+/* Tablets (landscape) and small desktops */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    .hero-intro {
+        font-size: 1.5rem;
+    }
+    .hero-desc {
+        font-size: 1rem;
+    }
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto; /* Adjust rows for 2 columns */
+    }
+    .project-more { /* Ensure 'More Projects' card spans correctly */
+        grid-column: span 1; /* Default to span 1 for better layout flow */
+        grid-row: auto;
+    }
+    .about-container, .cv-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    .about-photo, .cv-photo {
+        width: 200px; /* Adjust size for smaller screens */
+        height: auto; /* Maintain aspect ratio */
+    }
+    .about-box {
+        /* Text alignment for the box itself can be center if titles are centered */
+        text-align: center;
+    }
+    .about-box .about-text, .about-box em { /* Ensure paragraph text is left-aligned */
+        text-align: left;
+    }
+    .cv-left { /* Ensure CV text content is aligned as needed */
+        align-items: center; /* Center the photo and title if desired */
+    }
+    .cv-list {
+        text-align: left; /* Keep list items left-aligned */
+    }
+    .about-title, .cv-title, .services-title {
+        text-align: center;
+    }
+    .services-container {
+        align-items: center; /* Center items when in column layout */
+    }
+}
+
+/* Tablets (portrait) */
+@media (max-width: 768px) {
+    nav {
+        padding: 0.75rem 1.5rem; /* Adjust padding */
+    }
+    .nav-left {
+        margin-left: 15px; /* Reduce margin */
+        font-size: 16px; /* Adjust font size */
+    }
+    .hero {
+        padding: 0; /* Image full width, padding handled by hero-content */
+        justify-content: center; /* Center content on smaller screens */
+        text-align: center;
+    }
+    .hero-content {
+        padding: 0 1.5rem; /* Add padding here to keep text off edges */
+        text-align: center; /* Ensure text is centered */
+        max-width: 90%; /* Allow content to use more width */
+        box-sizing: border-box; /* Ensure padding is included in max-width calculation if it affects layout */
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-intro {
+        font-size: 1.2rem;
+    }
+    .hero-desc {
+        font-size: 0.9rem;
+    }
+    section {
+        padding: 3rem 0;
+    }
+    section:not(.hero) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr; /* Single column for phones */
+    }
+    .project-more {
+        grid-column: span 1; /* Full width for single column */
+    }
+    .about-photo {
+        width: 180px;
+    }
+    .about-title, .projects-title, .cv-title, .services-title {
+        font-size: 2rem; /* Adjust titles for readability */
+    }
+    .about-text { /* Ensure about text itself is readable */
+        text-align: left; /* Override parent center alignment if necessary */
+    }
+    .cv-left .cv-title { /* If .cv-left is centered, ensure title is also centered */
+        text-align: center;
+    }
+    .footer-title {
+        font-size: 1.8rem;
+    }
+    .footer-subtitle {
+        font-size: 0.9rem;
+    }
+    .footer-icons a img {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* Smaller Phones */
+@media (max-width: 480px) {
+    .nav-left {
+        font-size: 14px; /* Further reduce font size */
+    }
+    .hamburger {
+        top: 0.8rem;
+        right: 1rem;
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+    .hamburger span {
+        width: 1.8rem;
+        height: 0.2rem;
+        margin: 0.2rem 0;
+    }
+    .mobile-nav {
+        padding: 2rem 1.5rem;
+    }
+    .mobile-nav ul li a {
+        font-size: 1.1rem;
+    }
+    .close-mobile-nav {
+        top: 0.8rem;
+        right: 1rem;
+        font-size: 2rem;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-intro {
+        font-size: 1rem;
+    }
+    .hero-desc {
+        font-size: 0.8rem;
+    }
+    .about-title, .projects-title, .cv-title, .services-title {
+        font-size: 1.8rem;
+    }
+    .about-text {
+        font-size: 1rem;
+        text-align: left; /* Ensure readability */
+    }
+    .cv-list {
+        font-size: 1rem;
+        text-align: left; /* Ensure readability */
+    }
+    .services-row {
+        justify-content: center; /* Center service images */
+    }
+    .services-img {
+        width: 6rem; /* Adjust image sizes */
+        height: 8rem;
+    }
+    .footer-title {
+        font-size: 1.5rem;
+    }
+    .footer-subtitle {
+        font-size: 0.8rem;
+    }
+    .footer-icons {
+        gap: 24px; /* Reduce gap between icons */
+    }
+    .footer-icons a img {
+        width: 24px;
+        height: 24px;
     }
 }
