@@ -402,18 +402,12 @@ footer {
 }
 
 .services-img {
-    width: 7.5rem;
-    height: 10rem;
-    border-radius: 0.7rem;
+    display: block;
+    max-width: 7.5rem;
+    max-height: 10rem;
+    width: auto;
+    height: auto;
     background: #222;
-    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.18);
-}
-
-.services-more {
-    color: #fff;
-    font-size: 1rem;
-    margin-top: 24px;
-    text-align: left;
 }
 
 .custom-footer {
