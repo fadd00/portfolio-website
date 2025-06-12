@@ -8,18 +8,34 @@
     <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
-    <nav id="navbar">
-        <div class="nav-left">
-            <span class="brand">Arespict</span>
+    <header>
+        <nav id="navbar">
+            <div class="nav-left">
+                <span class="brand">Arespict</span>
+            </div>
+            <ul class="nav-right">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#services">Services</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+        <!-- Tambahkan overlay menu mobile -->
+        <div class="mobile-nav" id="mobile-nav">
+            <button class="close-mobile-nav" id="close-mobile-nav" aria-label="Close menu">&times;</button>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#services">Services</a></li>
+            </ul>
         </div>
-        <ul class="nav-right">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#cv">CV</a></li>
-            <li><a href="#services">Services</a></li>
-        </ul>
-    </nav>
+    </header>
 
     <section id="hero" class="hero">
         <div class="hero-content">
@@ -32,7 +48,7 @@
 
     <!-- Contoh struktur About Me -->
     <section id="about" class="about-section">
-
+      <div class="about-container">
         <img class="about-photo" src="src/images/about-photo.jpg" alt="About Photo">
         <div class="about-box">
           <h2 class="about-title">ABOUT ME</h2>
@@ -43,7 +59,7 @@
             I’ve participated in several photography exhibitions, including the Harbufkes x Persona TVP event, and these experiences have only fueled my ambition to grow as a professional photographer. I aim to work with many clients and keep creating visuals that connect with people on a deeper emotional level.
           </p>
         </div>
-
+      </div>
     </section>
 
     <section id="projects" class="projects-section">
