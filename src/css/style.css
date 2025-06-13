@@ -31,11 +31,12 @@ nav {
     font-weight: bold;
     font-size: 18px;
     letter-spacing: 1px;
+    margin-right: 30px; /* Combined: Provides space next to brand */
 }
 
 .nav-right {
     display: flex;
-    gap: 2rem;
+    gap: 2rem; /* Standardized to 2rem, was also 30px in a duplicate rule */
     list-style: none;
     margin: 0;
     padding: 0;
@@ -44,7 +45,7 @@ nav {
 .nav-right li a {
     color: white;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px; /* Consolidated to 18px */
     transition: color 0.2s;
 }
 
@@ -70,23 +71,13 @@ nav ul li a {
     padding: 10px;
 }
 
-.nav-left {
-  margin-right: 30px; /* Jarak antara brand dan menu */
-}
+/* Removed duplicate .nav-left rule */
 
-.nav-right {
-  display: flex;
-  gap: 30px; /* Jarak antar menu */
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+/* Removed duplicate .nav-right rule and its now redundant child .nav-right li a rule.
+   Font size consolidated into the first .nav-right li a rule.
+*/
 
-.nav-right li a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-}
+/* The following .nav-right li a rule is now fully removed. */
 
 section {
     padding: 4rem 0;
@@ -477,7 +468,7 @@ footer {
     display: none;
     position: absolute;
     top: 1.2rem;
-    right: 2rem;
+    right: 1.5rem; /* Adjusted for better mobile accessibility */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -555,11 +546,20 @@ footer {
 
 /* Responsive: hide desktop nav, show hamburger */
 @media (max-width: 900px) {
+    nav { /* Adjust nav padding when hamburger menu becomes active */
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .nav-left { /* Adjust brand margins */
+        margin-left: 1rem; 
+        margin-right: 0; /* Remove right margin as nav-right is hidden */
+    }
     .nav-right {
         display: none;
     }
     .hamburger {
         display: flex !important;
+        /* 'right: 1.5rem;' is now default from base .hamburger style */
     }
     .services-container {
         flex-direction: column;
@@ -579,9 +579,21 @@ footer {
 }
 
 /* Responsive: adjust nav padding */
+@media (max-width: 768px) { /* This breakpoint already exists and modifies nav padding */
+    /* nav padding is 0.75rem 1.5rem; - this is fine */
+    /* .nav-left margin-left is 15px; - this is fine */
+    /* .hamburger right will be 1.5rem from base style, which is good here */
+}
+
 @media (max-width: 600px) {
     nav {
-        padding: 0.7rem 1rem;
+        padding: 0.7rem 1rem; /* This is fine */
+    }
+    .nav-left { /* Ensure consistency for nav-left margin */
+        margin-left: 1rem; 
+    }
+    .hamburger { 
+        right: 1rem; /* Bring hamburger closer for smaller screens */
     }
     .services-container {
         padding: 0 0.5rem;
@@ -712,11 +724,12 @@ footer {
 /* Smaller Phones */
 @media (max-width: 480px) {
     .nav-left {
+        margin-left: 0.5rem; /* Further adjust for very small screens */
         font-size: 14px; /* Further reduce font size */
     }
     .hamburger {
         top: 0.8rem;
-        right: 1rem;
+        right: 1rem; /* This is fine, matches 600px breakpoint adjustment */
         width: 2.2rem;
         height: 2.2rem;
     }
@@ -835,71 +848,169 @@ footer {
     right: 10px;
 }
 
-/* Initially hide carousels on desktop, show original grid/row layout */
+/* Desktop view: Display original layout using carousel items */
 @media (min-width: 769px) {
-    .project-carousel,
-    .services-carousel {
-        display: none !important; /* Important to override other display styles */
+    /* Hide carousel-specific controls */
+    .carousel-btn {
+        display: none !important;
     }
 
-    /* Ensure original desktop layouts are visible */
-    .projects-grid {
+    /* Style Project Carousel's slides container to behave like the original grid */
+    .project-carousel .carousel-slides {
         display: grid !important;
+        grid-template-columns: repeat(4, 1fr);    /* From original .projects-grid */
+        grid-template-rows: repeat(2, auto);        /* From original .projects-grid */
+        gap: 1.5rem;                                /* From original .projects-grid */
+        max-width: 1200px;                          /* From original .projects-grid */
+        margin: 0 auto;                             /* From original .projects-grid */
+        align-items: stretch;                       /* From original .projects-grid */
+        overflow-x: visible !important;             /* Override carousel behavior */
     }
-    .services-container .services-row { /* Target .services-row specifically for desktop */
+
+    .project-carousel .carousel-slide {
+        display: block !important; /* Let grid position it */
+        min-width: auto !important; /* Override carousel default */
+        width: auto !important; /* Override carousel default */
+        /* backgroundColor: lightblue; */ /* For debugging */
+    }
+    
+    /* Ensure project items display as intended within the grid cell */
+    .project-carousel .carousel-slide .project-img-vertical,
+    .project-carousel .carousel-slide .project-img-horizontal {
+        width: 100%;
+        height: 100%; /* Allow image to fill the grid cell height if needed */
+        object-fit: cover; /* Or 'contain' based on original design */
+        display: block !important;
+    }
+
+    .project-carousel .carousel-slide .project-more {
+        display: flex !important; 
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        grid-row: 1 / span 2 !important;    /* Crucial for .project-more original positioning */
+        grid-column: 4 / 5 !important;      /* Crucial for .project-more original positioning */
+        padding: 22px 12px 16px 12px; 
+        color: #111; 
+        background: #fff; 
+        height: 100%; /* Ensure it spans the full height of its grid area */
+        box-sizing: border-box; /* Include padding in height calculation */
+    }
+
+    /* Style Service Carousel's slides containers to behave like the original rows */
+    .services-carousel .carousel-slides {
         display: flex !important;
+        gap: 14px;                                  /* From original .services-row */
+        margin-bottom: 18px;                        /* From original .services-row */
+        overflow-x: visible !important;             /* Override carousel behavior */
+        flex-wrap: nowrap; /* Assuming original services-row didn't wrap */
+    }
+
+    .services-carousel .carousel-slide {
+        display: block !important; /* Let flex position it */
+        min-width: auto !important; /* Override carousel default */
+        width: auto !important; /* Override carousel default */
+        /* backgroundColor: lightcoral; */ /* For debugging */
+    }
+    
+    .services-carousel .carousel-slide .services-img {
+        display: block !important; 
+        max-width: 7.5rem; 
+        max-height: 10rem; 
+        width: auto;
+        height: auto;
+    }
+
+    /* Restore overall .services-container layout if it was column on smaller screens */
+    .services-container {
+        display: flex !important; 
+        flex-direction: row !important; /* Desktop: side-by-side */
+        justify-content: center;
+        align-items: flex-start;
+        gap: 3.5rem;
+    }
+    .services-left, .services-right {
+        flex: 1 !important; 
+        display: flex !important; 
+        flex-direction: column !important; 
+        align-items: flex-start !important; 
     }
 }
 
-/* On smaller screens, activate carousel and hide original grid/row if necessary */
+/* Mobile view: Ensure carousel behavior is active */
 @media (max-width: 768px) {
-    /* Hide original project grid if it's still somehow visible */
-    .projects-grid {
-        display: none !important;
+    /* Ensure .carousel-slides for projects uses flex for mobile (carousel behavior) */
+    .project-carousel .carousel-slides {
+        display: flex !important; /* CAROUSEL behavior */
+        /* Reset any grid properties from desktop */
+        grid-template-columns: none !important;
+        grid-template-rows: none !important;
+        gap: 0 !important; 
+        overflow-x: hidden !important; /* Crucial for carousel */
     }
-    /* Hide original services rows if they are still somehow visible */
-    .services-container .services-row { /* More specific selector if needed */
-        display: none !important;
+    .project-carousel .carousel-slide {
+        min-width: 100% !important; /* CAROUSEL behavior */
+        display: none !important; /* JS will make it active */
     }
-
-    .project-carousel,
-    .services-carousel {
-        display: block !important; /* Show carousel containers */
+    .project-carousel .carousel-slide.active {
+        display: flex !important; /* CAROUSEL behavior */
+        justify-content: center;
+        align-items: center;
     }
-    .project-carousel .carousel-slides,
-    .services-carousel .carousel-slides {
-        display: flex !important; /* Ensure slides container is flex for scrolling/JS logic */
+    /* Reset project-more specific grid positioning for mobile, it's a slide now */
+     .project-carousel .carousel-slide .project-more {
+        grid-row: auto !important; 
+        grid-column: auto !important;
+        width: 80% !important; /* From previous mobile specific rule */
+        margin: 0 auto !important; /* From previous mobile specific rule */
+        padding: 1rem !important; /* From previous mobile specific rule */
+        box-sizing: border-box !important; /* From previous mobile specific rule */
     }
-    
-    /* Ensure slides themselves are displayed by JS, but container is ready */
-    .project-carousel .carousel-slide,
-    .services-carousel .carousel-slide {
-        /* display: none; /* JS will handle active slide */
-        /* min-width: 100%; /* Already set, but good to keep in mind */
+    .project-carousel .carousel-slide .project-more .qr-img {
+        width: 100px !important; 
+        height: 100px !important;
     }
-
-    /* Adjustments for project carousel images to ensure they fit well */
     .project-carousel .carousel-slide .project-img-vertical,
     .project-carousel .carousel-slide .project-img-horizontal {
-        max-height: 70vh; /* Example: limit height on mobile */
-        width: auto;
-        object-fit: contain; /* Ensure whole image is visible */
-    }
-    .project-carousel .carousel-slide .project-more {
-        width: 80%; /* Adjust width of the 'more projects' card */
-        margin: 0 auto; /* Center it */
-        padding: 1rem;
-        box-sizing: border-box;
-    }
-     .project-carousel .carousel-slide .project-more .qr-img {
-        width: 100px; /* Smaller QR code */
-        height: 100px;
+        max-height: 70vh !important; 
+        width: auto !important;
+        object-fit: contain !important; 
     }
 
-    /* Adjustments for services carousel images */
+
+    /* Ensure .carousel-slides for services uses flex for mobile (carousel behavior) */
+    .services-carousel .carousel-slides {
+        display: flex !important; /* CAROUSEL behavior */
+        overflow-x: hidden !important; /* Crucial for carousel */
+        gap: 0 !important; /* Reset desktop gap */
+    }
+    .services-carousel .carousel-slide {
+        min-width: 100% !important; /* CAROUSEL behavior */
+        display: none !important; /* JS will make it active */
+    }
+    .services-carousel .carousel-slide.active {
+        display: flex !important; /* CAROUSEL behavior */
+        justify-content: center;
+        align-items: center;
+    }
     .services-carousel .carousel-slide .services-img {
-        max-height: 50vh; /* Example: limit height */
-        width: auto;
-        object-fit: contain;
+        max-height: 50vh !important; 
+        width: auto !important;
+        object-fit: contain !important;
+    }
+    
+    .carousel-btn { /* Ensure buttons are visible on mobile */
+        display: block !important; /* Or inline-block, flex, etc., as originally styled */
+    }
+    
+    /* Ensure the overall .services-container layout is column for mobile */
+    /* This was already in @media (max-width: 900px), ensure it's not conflicting or specify for 768px if needed */
+    .services-container {
+        flex-direction: column !important;
+        align-items: center !important; /* Or as per original mobile design */
+        padding: 0 1rem !important; /* From existing @media (max-width: 900px) */
+    }
+     .services-left, .services-right {
+        align-items: center !important; /* Center content in column layout */
     }
 }
