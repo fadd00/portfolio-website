@@ -215,7 +215,7 @@ footer {
 .about-text {
     font-size: 1.1rem;
     line-height: 1.7;
-    text-align: left;
+    text-align: justify;
     font-family: 'Poppins', Arial, sans-serif;
 }
 
@@ -574,7 +574,7 @@ footer {
         display: none;
     }
     .hamburger {
-        display: flex !important;
+        display: block;
         right: 1rem; /* Adjusted to align with nav padding */
     }
     .services-container {
