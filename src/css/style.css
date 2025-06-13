@@ -595,11 +595,16 @@ footer {
 }
 
 /* Responsive: adjust nav padding */
-@media (max-width: 768px) { /* This breakpoint already exists and modifies nav padding */
-    /* nav padding is 0.75rem 1.5rem; - this is fine */
-    /* .nav-left margin-left is 15px; - this is fine */
-    /* .hamburger right will be 1.5rem from base style, which is good here */
+@media (max-width: 768px) {
+    .nav-right {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
 }
+
 
 @media (max-width: 600px) {
     nav {
