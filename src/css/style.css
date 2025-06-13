@@ -870,7 +870,7 @@ footer {
     .services-carousel .carousel-slides {
         display: flex !important; /* Ensure slides container is flex for scrolling/JS logic */
     }
-
+    
     /* Ensure slides themselves are displayed by JS, but container is ready */
     .project-carousel .carousel-slide,
     .services-carousel .carousel-slide {
