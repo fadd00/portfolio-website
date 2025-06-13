@@ -1,9 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: 'Poppins', Arial, sans-serif;
     background-color: black;
     color: white;
-    /* Hapus padding global */
     box-sizing: border-box;
 }
 
@@ -48,10 +51,11 @@ nav {
 
 .nav-right {
     display: flex;
-    gap: 2rem; /* Standardized to 2rem, was also 30px in a duplicate rule */
+    gap: 1rem; /* Standardized to 2rem, was also 30px in a duplicate rule */
     list-style: none;
     margin: 0;
     padding: 0;
+    flex-wrap: wrap;
 }
 
 .nav-right li a {
