@@ -670,7 +670,7 @@ footer {
         text-align: center;
     }
     .hero-content {
-        padding: 0 1.5rem; /* Add padding here to keep text off edges */
+        padding: 4.5rem 1.5rem 2rem 1.5rem; /* Adjusted for navbar overlap and consistent spacing */
         text-align: center; /* Ensure text is centered */
         max-width: 90%; /* Allow content to use more width */
         box-sizing: border-box; /* Ensure padding is included in max-width calculation if it affects layout */
@@ -684,12 +684,8 @@ footer {
     .hero-desc {
         font-size: 0.9rem;
     }
-    section {
-        padding: 3rem 0;
-    }
     section:not(.hero) {
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding: 4.5rem 1rem 2rem 1rem; /* Adjusted for navbar overlap and consistent mobile spacing */
     }
     .projects-grid {
         grid-template-columns: 1fr; /* Single column for phones */
@@ -700,6 +696,11 @@ footer {
     .about-photo {
         width: 180px;
     }
+    .about-box {
+        padding: 1.5rem 1rem; /* Reduced padding for mobile */
+        max-width: 100%;      /* Allow box to fill container width */
+        box-sizing: border-box; /* Ensure padding is included in width */
+    }
     .about-title, .projects-title, .cv-title, .services-title {
         font-size: 2rem; /* Adjust titles for readability */
     }
@@ -708,6 +709,9 @@ footer {
     }
     .cv-left .cv-title { /* If .cv-left is centered, ensure title is also centered */
         text-align: center;
+    }
+    .custom-footer {
+        padding: 3rem 1rem 2.5rem 1rem; /* Adjusted padding for mobile */
     }
     .footer-title {
         font-size: 1.8rem;
