@@ -547,8 +547,8 @@ footer {
 /* Responsive: hide desktop nav, show hamburger */
 @media (max-width: 900px) {
     nav { /* Adjust nav padding when hamburger menu becomes active */
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
     .nav-left { /* Adjust brand margins */
         margin-left: 1rem; 
@@ -559,7 +559,7 @@ footer {
     }
     .hamburger {
         display: flex !important;
-        /* 'right: 1.5rem;' is now default from base .hamburger style */
+        right: 1rem; /* Adjusted to align with nav padding */
     }
     .services-container {
         flex-direction: column;
@@ -587,13 +587,13 @@ footer {
 
 @media (max-width: 600px) {
     nav {
-        padding: 0.7rem 1rem; /* This is fine */
+        padding: 0.7rem 0.75rem; /* This is fine */
     }
     .nav-left { /* Ensure consistency for nav-left margin */
         margin-left: 1rem; 
     }
     .hamburger { 
-        right: 1rem; /* Bring hamburger closer for smaller screens */
+        right: 0.75rem; /* Adjusted to align with nav padding */
     }
     .services-container {
         padding: 0 0.5rem;
@@ -658,7 +658,7 @@ footer {
 /* Tablets (portrait) */
 @media (max-width: 768px) {
     nav {
-        padding: 0.75rem 1.5rem; /* Adjust padding */
+        padding: 0.75rem 1rem; /* Adjust padding */
     }
     .nav-left {
         margin-left: 15px; /* Reduce margin */
@@ -723,13 +723,16 @@ footer {
 
 /* Smaller Phones */
 @media (max-width: 480px) {
+    nav {
+        padding: 0.7rem 0.5rem;
+    }
     .nav-left {
         margin-left: 0.5rem; /* Further adjust for very small screens */
         font-size: 14px; /* Further reduce font size */
     }
     .hamburger {
         top: 0.8rem;
-        right: 1rem; /* This is fine, matches 600px breakpoint adjustment */
+        right: 0.5rem; /* Adjusted to align with nav padding */
         width: 2.2rem;
         height: 2.2rem;
     }
