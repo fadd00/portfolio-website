@@ -777,3 +777,129 @@ footer {
         height: 24px;
     }
 }
+
+/* Carousel Basic Styling */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-slides {
+    display: flex;
+    overflow-x: hidden; /* Ensures slides don't cause horizontal scroll */
+    scroll-snap-type: x mandatory; /* Optional: for snap scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+    width: 100%;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    display: none; /* Initially hide all slides */
+    justify-content: center; /* Center content if slide is wider than image */
+    align-items: center; /* Center content vertically */
+    transition: transform 0.5s ease-in-out; /* Smooth transition for sliding effect */
+}
+
+.carousel-slide.active {
+    display: flex; /* Show active slide, use flex to center content */
+}
+
+/* Style for images within carousel slides to ensure they are responsive */
+.carousel-slide img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove extra space below image */
+    margin: 0 auto; /* Center image if it's smaller than slide container */
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 100;
+    font-size: 1.5rem;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Initially hide carousels on desktop, show original grid/row layout */
+@media (min-width: 769px) {
+    .project-carousel,
+    .services-carousel {
+        display: none !important; /* Important to override other display styles */
+    }
+
+    /* Ensure original desktop layouts are visible */
+    .projects-grid {
+        display: grid !important;
+    }
+    .services-container .services-row { /* Target .services-row specifically for desktop */
+        display: flex !important;
+    }
+}
+
+/* On smaller screens, activate carousel and hide original grid/row if necessary */
+@media (max-width: 768px) {
+    /* Hide original project grid if it's still somehow visible */
+    .projects-grid {
+        display: none !important;
+    }
+    /* Hide original services rows if they are still somehow visible */
+    .services-container .services-row { /* More specific selector if needed */
+        display: none !important;
+    }
+
+    .project-carousel,
+    .services-carousel {
+        display: block !important; /* Show carousel containers */
+    }
+    .project-carousel .carousel-slides,
+    .services-carousel .carousel-slides {
+        display: flex !important; /* Ensure slides container is flex for scrolling/JS logic */
+    }
+
+    /* Ensure slides themselves are displayed by JS, but container is ready */
+    .project-carousel .carousel-slide,
+    .services-carousel .carousel-slide {
+        /* display: none; /* JS will handle active slide */
+        /* min-width: 100%; /* Already set, but good to keep in mind */
+    }
+
+    /* Adjustments for project carousel images to ensure they fit well */
+    .project-carousel .carousel-slide .project-img-vertical,
+    .project-carousel .carousel-slide .project-img-horizontal {
+        max-height: 70vh; /* Example: limit height on mobile */
+        width: auto;
+        object-fit: contain; /* Ensure whole image is visible */
+    }
+    .project-carousel .carousel-slide .project-more {
+        width: 80%; /* Adjust width of the 'more projects' card */
+        margin: 0 auto; /* Center it */
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+     .project-carousel .carousel-slide .project-more .qr-img {
+        width: 100px; /* Smaller QR code */
+        height: 100px;
+    }
+
+    /* Adjustments for services carousel images */
+    .services-carousel .carousel-slide .services-img {
+        max-height: 50vh; /* Example: limit height */
+        width: auto;
+        object-fit: contain;
+    }
+}
