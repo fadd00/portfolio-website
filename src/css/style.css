@@ -199,7 +199,7 @@ footer {
 .about-text {
     font-size: 1.1rem;
     line-height: 1.7;
-    text-align: left;
+    text-align: justify;
     font-family: 'Poppins', Arial, sans-serif;
 }
 
@@ -639,7 +639,7 @@ footer {
         text-align: center;
     }
     .about-box .about-text, .about-box em { /* Ensure paragraph text is left-aligned */
-        text-align: left;
+        /* text-align: left; removed to inherit from base .about-text */
     }
     .cv-left { /* Ensure CV text content is aligned as needed */
         align-items: center; /* Center the photo and title if desired */
@@ -705,7 +705,7 @@ footer {
         font-size: 2rem; /* Adjust titles for readability */
     }
     .about-text { /* Ensure about text itself is readable */
-        text-align: left; /* Override parent center alignment if necessary */
+        /* text-align: left; removed to inherit from base .about-text */
     }
     .cv-left .cv-title { /* If .cv-left is centered, ensure title is also centered */
         text-align: center;
@@ -770,7 +770,7 @@ footer {
     }
     .about-text {
         font-size: 1rem;
-        text-align: left; /* Ensure readability */
+        /* text-align: left; removed to inherit from base .about-text */
     }
     .cv-list {
         font-size: 1rem;
