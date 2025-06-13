@@ -31,11 +31,12 @@ nav {
     font-weight: bold;
     font-size: 18px;
     letter-spacing: 1px;
+    margin-right: 30px; /* Combined: Provides space next to brand */
 }
 
 .nav-right {
     display: flex;
-    gap: 2rem;
+    gap: 2rem; /* Standardized to 2rem, was also 30px in a duplicate rule */
     list-style: none;
     margin: 0;
     padding: 0;
@@ -44,7 +45,7 @@ nav {
 .nav-right li a {
     color: white;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px; /* Consolidated to 18px */
     transition: color 0.2s;
 }
 
@@ -70,23 +71,13 @@ nav ul li a {
     padding: 10px;
 }
 
-.nav-left {
-  margin-right: 30px; /* Jarak antara brand dan menu */
-}
+/* Removed duplicate .nav-left rule */
 
-.nav-right {
-  display: flex;
-  gap: 30px; /* Jarak antar menu */
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+/* Removed duplicate .nav-right rule and its now redundant child .nav-right li a rule.
+   Font size consolidated into the first .nav-right li a rule.
+*/
 
-.nav-right li a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-}
+/* The following .nav-right li a rule is now fully removed. */
 
 section {
     padding: 4rem 0;
